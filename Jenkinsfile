@@ -15,7 +15,7 @@ node('iOS Node') {
         ])
 
         // Build and Test
-        sh 'xcodebuild -scheme "TimeTable" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 6s Plus,OS=10.3" -enableCodeCoverage YES | xcpretty -r junit'
+        sh 'xcodebuild -scheme "TimeTable" -configuration "Debug" build test -destination "platform=iOS Simulator,name=iPhone 6s Plus,OS=10.3" -enableCodeCoverage YES | /usr/local/bin/xcpretty -r junit'
 
         // Publish test restults.
         step([$class: 'JUnitResultArchiver', allowEmptyResults: true, testResults: 'build/reports/junit.xml'])
